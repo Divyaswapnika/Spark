@@ -2,13 +2,39 @@
 <html>
 <head>
 	<title></title>
-</head>
-<body>
+	<style>
+		.spark
+    {
+    float: left;
+    width: 400px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    }
+    .top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
 
+body {
+  background-image: url('pay1.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+	
+</head>
+<body >
+	<div class="container">
+	
+	 <div class="top-right">Top Right</div>
+</body>
 
 <?php
 $email=$_GET["email"];
-echo "<h1>$email</h1>";
+echo "<h2>$email</h2>";
 ?>
 <?php
 		$conn = mysqli_connect("localhost","swapni","Swapni@7673","swap_db");
@@ -17,11 +43,14 @@ echo "<h1>$email</h1>";
 
 	}
 	$sql = "SELECT * from bankdetails_db where Customer_email='$email'";
+	 echo '<ul class="spark">';
 	$result = $conn->query($sql);
 	if($result->num_rows > 0) {
 	  while($row = $result -> fetch_assoc()) {
-	 echo "first name: " . $row["first_name"] ." Email: " .$row["Customer_email"] ." City: ".$row["city"]."<br><h3> Current_bal: ".$row["Current_bal"]."</h3>";
+	 echo "<h3>first name: " . $row["first_name"] ."<br><h3> Email: " .$row["Customer_email"] ." <br><h3>City: ".$row["city"]."<br><h3> Current_bal: ".$row["Current_bal"]."</h3>";
+	
 	}
+
 echo "</table>";
 }
 else{
@@ -30,11 +59,11 @@ else{
    $conn->close();
 	?>
 <form action="Transfer.php" method="POST">
-	<input type="number" placeholder="Enter the amount" Name="amount">
+	<input type="number" placeholder="Enter the amount" Name="amount"><br>
 	<?php
 	 echo "<input type='hidden' name = 'email' value='$email'>";
 	?>
-	<button>Transfer from Bank Manager Account</button>
+	<br><button>Transfer from Bank Manager Account</button>
 
 </form>	
 </body>
