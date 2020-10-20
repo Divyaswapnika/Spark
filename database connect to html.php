@@ -2,8 +2,15 @@
 <html>
 <head>
 	<title>Connect Database</title>
+	<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
 </head>
 <body>
+	<center>
+
 	<form action="viewcustomer.php" method="GET">
 
 	
@@ -34,6 +41,8 @@ else{
    $conn->close();
 	?>
 	</table>
+</form>
+</center>
 
 </body>
 </html>
