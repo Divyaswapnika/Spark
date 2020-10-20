@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Transfer</title>
+	
+
+</head>
+<body>
+
+</body>
+</html>
 <?php
    $email=$_POST["email"];
   $amount=$_POST["amount"];
@@ -31,14 +42,17 @@ else{
    else
    {
    	$managerBalance=$managerBalance-$amount;
-   	echo $managerBalance;
+   	echo "<h3>Manager Balance : $managerBalance</h3>";
    	$userBalance=$userBalance+$amount;
    	$sql2 = "UPDATE bankdetails_db SET Current_bal='$userBalance' WHERE Customer_email='$email'";
     $sql3 = "UPDATE bankdetails_db SET Current_bal='$managerBalance' WHERE Customer_email='bankmanager@gmail.com'";
     $R1=$conn->query($sql2);
 
     $R2=$conn->query($sql3);
-    echo "<h3>Transcation Completed</h3>";
-    echo "<a href='database%20connect%20to%20html.php'>Click Here to View customers</a>";
+    echo "<h3>Hey...Your Transcation Was Completed Sucessfully!!!!<br><br>THANK YOU!!!!</h3>";
+    echo "<button><a href='database%20connect%20to%20html.php'>Click Here to View customers</a></button>";
+    
+
+
    }
   ?>
